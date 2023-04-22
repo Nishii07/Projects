@@ -1,0 +1,13 @@
+#to connect to mysql server
+mysql -u root -h db_host -p
+
+#to take the mysql backup
+mysql -u root -h db_host -p testdb > /tmp/db.sql
+#ablove cmd is taking the testdb from mysql container and putting it in remote host container under /tmp/db.sql
+
+#now to copy this db to s3 manually export the keys first in remote host container
+export AWS_ACCESS_KEY_ID="  "
+export AWS_SECRET_ACCESS_KEY="  "
+
+#now copy the data to s3
+aws s3 cp /tmp/db.sql s3://mysqlbackup1/db.sql
