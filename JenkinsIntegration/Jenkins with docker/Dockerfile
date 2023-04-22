@@ -11,4 +11,15 @@ RUN chown remote_user:remote_user -R /home/remote_user/.ssh && \
     chmod 600 /home/remote_user/.ssh/authorized_keys
 
 RUN ssh-keygen -A
+
+#installing mysql
+RUN yum -y install mysql
+
+#downloading the python script
+#run that script
+#install aws cli
+RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
+    python3 get-pip.py && \
+    pip3 install awscli --upgrade
+    
 CMD /usr/sbin/sshd -D
