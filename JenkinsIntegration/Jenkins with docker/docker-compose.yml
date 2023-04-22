@@ -1,0 +1,18 @@
+version: '3'
+services:
+  myubuntu:
+    container_name: ubuntu
+    image: ubuntu
+    build:
+      context: /Users/nishisingh/Desktop/Docker/ubu_dfile
+    networks:
+      - net
+  remote_host:
+    container_name: remote-host
+    image: remote-host
+    build:
+      context: /Users/nishisingh/Desktop/Docker/Jenkins_Docker
+    networks:
+      - net
+networks:
+  net: 
